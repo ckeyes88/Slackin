@@ -8,29 +8,29 @@ This is currently in its first iteration so I expect there are quite a few bugs 
 
 1. Clone this repo.
 
-```
-git clone <REPO_URL>
-```
-1. Install Dependencies
+  ```
+  git clone <REPO_URL>
+  ```
+2. Install Dependencies
 
-```
-mix deps.get
-```
+  ```
+  mix deps.get
+  ```
 
-1. Add a `<env>.secret.exs` file with your slack api key to the slackin config folder
+3. Add a `<env>.secret.exs` file with your slack api key to the slackin config folder
 
-```elixir
-use Mix.Config 
+  ```elixir
+  use Mix.Config 
 
-config :slack, Slackin.Kin,
-  secret_key: <YOUR_KEY_HERE>
-```
+  config :slack, Slackin.Kin,
+    secret_key: <YOUR_KEY_HERE>
+  ```
 
-1. Run from the command line
+4. Run from the command line
 
-```
-mix run --no-halt
-```
+  ```
+  mix run --no-halt
+  ```
 
 ## Usage
 
