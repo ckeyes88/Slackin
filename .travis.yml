@@ -2,5 +2,7 @@ language: elixir
 sudo: required
 elixir:
   - 1.4.2
+install:
+  - mix deps.get
 
 
