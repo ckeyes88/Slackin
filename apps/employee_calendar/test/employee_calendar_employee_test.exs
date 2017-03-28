@@ -38,7 +38,7 @@ defmodule EmployeeCalendar.EmployeeTest do
 
   test "get_time_off_for_day should exclude date ranges that the given day does not fall within", %{start: start, ending: ending} do
     test_employee = %EmployeeCalendar.Employee{username: "ckeyes", calendar: [%{from: start, to: ending, reason: :wfh}]}
-    assert EmployeeCalendar.Employee.get_time_off_for_day(test_employee, "06/25/2017") == {false, "ckeyes"}
+    assert EmployeeCalendar.Employee.get_time_off_for_day(test_employee, "06/25/2017") == {false, "ckeyes", nil}
   end
 
   test "Invalid date range should return an error tuple", %{test_employee: test_employee} do

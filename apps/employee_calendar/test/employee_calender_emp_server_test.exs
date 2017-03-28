@@ -10,7 +10,6 @@ defmodule EmployeeCalendar.EmployeeServerTest do
   end
 
   test "Employee server should create a new employee with initial state", %{username: username, employee: employee} do
-
     assert EmployeeServer.get_employee(username) == employee
   end
 
@@ -28,7 +27,7 @@ defmodule EmployeeCalendar.EmployeeServerTest do
     EmployeeServer.add_time_off(pid, "05/05/2016","05/07/2016", "work from home")
     EmployeeServer.remove_time_off(pid, "05/07/2016")
 
-    assert {false, "ckeyes"} = EmployeeServer.get_time_off_for_day(pid, "05/06/2016")
+    assert {false, "ckeyes", nil} = EmployeeServer.get_time_off_for_day(pid, "05/06/2016")
   end
 
   test "Employee server should be able to clean old dates from the calendar", %{username: pid} do
@@ -37,7 +36,7 @@ defmodule EmployeeCalendar.EmployeeServerTest do
     EmployeeServer.add_time_off(pid, "05/05/2018","05/07/2018", "work from home")
     EmployeeServer.clean_calendar(pid, "06/01/2017")
     assert {true, "ckeyes", "work from home"} = EmployeeServer.get_time_off_for_day(pid, "05/07/2018")
-    assert {false, "ckeyes"} = EmployeeServer.get_time_off_for_day(pid, "05/06/2017")
-    assert {false, "ckeyes"} = EmployeeServer.get_time_off_for_day(pid, "05/06/2016")
+    assert {false, "ckeyes", nil} = EmployeeServer.get_time_off_for_day(pid, "05/06/2017")
+    assert {false, "ckeyes", nil} = EmployeeServer.get_time_off_for_day(pid, "05/06/2016")
   end
 end
